@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+
+    <title>Worst Stocks</title>    
+ 
+    <!--Force internet explorer/edge to comply-->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Robert Alger & Andre Carrera">
+
+    <!-- Custom Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    
+    <!--W3 Stylesheet-->
+    <!--https://www.w3schools.com/w3css/ for documentation-->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    
+    
+    <!--JAVASCRIPT AND JQUERY-->
+    <script>
+        
+    //Function to format the date to yyyy-mm-dd - took this straight from stack overflow.    
+    function formatDate(date) {
+        var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+        if (month.length < 2) month = '0' + month;
+        if (day.length < 2) day = '0' + day;
+        return [year, month, day].join('-');
+    }   
+            
+    //JQUERY
+    //Click the submit button and get (1) Ticker info and (2) the date
+    $("#tickerButton").click(function(e){
+    var ticker = $("#tickerField").val();
+    var date = new Date($("#dateField").val()); 
+    var dateString = formatDate(date).
+    console.log(datestring);
+    e.preventDefault();
+        
+    //Alphavantage API
+    var APIkey = "JDLFW3LUQKIPCLUZ"
+    
+    var myurl= "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY"
+    myurl += "&symbol=" + ticker;
+    myurl += "&apikey=" + apiKey;
+    console.log(ticker);
+    console.log(apiKey);
+    $.ajax({
+      url : myurl,
+      dataType : "json",
+      success : function(parsed_json) {
+          var open = parsed_json['Time Series (Daily)'][dateString]["1. open"]
+          var high = parsed_json['Time Series (Daily)'][dateString]["2. high"]
+          var low = parsed_json['Time Series (Daily)'][dateString]["3. low"]
+          var closeVal = parsed_json['Time Series (Daily)'][dateString]["4. close"]
+          var volume = parsed_json['Time Series (Daily)'][dateString]["5. volume"]
+          everything = "<ul>";
+          everything += "<li>Open: "+open;
+          everything += "<li>High: "+high;
+          everything += "<li>Low: "+low;
+          everything += "<li>Close: "+closeVal;
+          everything += "<li>Volume: "+volume;
+          everything += "</ul>";
+          $("#stockData").html(everything);
+      } //End of AJAX-SUCCESS
+    }); //End of AJAX
+ }); //End of Click
+    
+    </script>
+    
+</head>
+<body>
+ 
+<form class="w3-container">
+    <label>Choose Stock</label>
+Select day: <input class="w3-input" type="datetime" id = "dateField" value=""><br>
+Enter A Stock Ticker: <input type="text" id="tickerField" value=""><br>
+Suggestion: <span id="txtHint">Empty</span>
+
+<input class="w3-input" id="tickerButton" type="submit" value="Submit">   
+</form>
+
+<div class="w3-display-container" id="stockData">No info</div>
+    
+    
+    
+    
+    
+    
+
+    
+</body>
+</html>
