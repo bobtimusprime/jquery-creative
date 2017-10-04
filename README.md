@@ -5,7 +5,7 @@ For this assignment, you should utilize your knowledge of HTML/CSS/JS/JQuery to 
 
 Do not copy another existing page! This is your chance to be creative and to work with another class member to do something phenomenal. If your project is simply an extension of a lab or a previous creative project, you will lose points.
 
-The groups for this are here: <a title="Creative #2 JQuery Partners" href="https://byu.instucture.com/courses/892/pages/creative-number-2-jquery-partners" data-api-endpoint="https://byu.instructure.com/api/v1/courses/892/pages/creative-number-2-jquery-partners" data-api-returntype="Page">Creative #2 JQuery Partners</a>
+The groups for this are here: <a title="Creative #2 JQuery Partners" href="https://byu.instructure.com/courses/892/pages/creative-number-2-jquery-partners" data-api-endpoint="https://byu.instructure.com/api/v1/courses/892/pages/creative-number-2-jquery-partners" data-api-returntype="Page">Creative #2 JQuery Partners</a>
 
 ** This assignment (and all creative projects) cannot be turned in late and need to be presented in class.**
 
